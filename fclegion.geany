@@ -9,6 +9,7 @@ indent_mode=2
 [project]
 name=fclegion
 base_path=/home/sergey/public_html/fclegion/
+description=
 
 [long line marker]
 long_line_behaviour=1
