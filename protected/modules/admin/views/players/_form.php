@@ -33,9 +33,15 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'team_id'); ?>
-		<?php echo $form->textField($model,'team_id',array('size'=>10,'maxlength'=>10)); ?>
-		<?php echo $form->error($model,'team_id'); ?>
+		<?php //echo $form->labelEx($model,'team_id'); ?>
+		<?php //echo $form->textField($model,'team_id',array('size'=>10,'maxlength'=>10)); ?>
+		<?php //echo $form->error($model,'team_id'); ?>
+	</div>
+	
+	<div class="row">
+		<?php echo $form->labelEx($model,'number'); ?>
+		<?php echo $form->textField($model,'number',array('size'=>5,'maxlength'=>128)); ?>
+		<?php echo $form->error($model,'number'); ?>
 	</div>
 
 	<div class="row">
@@ -46,26 +52,48 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'birthday'); ?>
-		<?php echo $form->textField($model,'birthday'); ?>
+		<?php
+		$this->widget('zii.widgets.jui.CJuiDatePicker', array(
+			'model' => $model,
+			'attribute' => 'birthday',
+			'language'=>'ru',
+			'htmlOptions' => array(
+				'size' => '10',         // textField size
+				'maxlength' => '10',    // textField maxlength
+			),
+			'options'=>array(
+				'dateFormat' => 'yy-mm-dd',
+				'changeYear' => true,
+				'yearRange'=>'1900:2099',
+			),
+		));
+		?>
 		<?php echo $form->error($model,'birthday'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'image'); ?>
-		<?php echo $form->textField($model,'image',array('size'=>60,'maxlength'=>128)); ?>
+		<?php (isset($model->image))? $image = $model->image : $image = null; ?>
+		<?php echo CHtml::image(Yii::app()->request->baseUrl.'/images/players/'.$image,'',array('height'=>150,'width'=>'100')); ?>
+		<?php echo $form->fileField($model,'image'); ?>
 		<?php echo $form->error($model,'image'); ?>
 	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'biography'); ?>
-		<?php echo $form->textArea($model,'biography',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'biography'); ?>
-	</div>
-
+	
 	<div class="row">
 		<?php echo $form->labelEx($model,'description'); ?>
 		<?php echo $form->textArea($model,'description',array('rows'=>6, 'cols'=>50)); ?>
 		<?php echo $form->error($model,'description'); ?>
+	</div>
+
+	<div class="row">
+		<?php echo $form->labelEx($model,'biography'); ?>
+		<?php
+		$this->widget('ext.ckeditor.CKEditor',array(
+		  "model"=>$model,                 # Data-Model
+		  "attribute"=>'biography',          # Attribute in the Data-Model
+		  ));
+		?>
+		<?php echo $form->error($model,'biography'); ?>
 	</div>
 
 	<div class="row buttons">

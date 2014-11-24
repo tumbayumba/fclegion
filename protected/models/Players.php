@@ -35,10 +35,11 @@ class Players extends CActiveRecord
 			array('lastname, team_id', 'required'),
 			array('firstname, lastname, alias, image', 'length', 'max'=>128),
 			array('team_id', 'length', 'max'=>10),
+			array('number', 'numerical', 'integerOnly'=>true),
 			array('birthday, biography, description', 'safe'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
-			array('id, firstname, lastname, team_id, alias, birthday, image, biography, description', 'safe', 'on'=>'search'),
+			array('id, firstname, lastname, team_id, number, alias, birthday, image, biography, description', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -63,6 +64,7 @@ class Players extends CActiveRecord
 			'firstname' => 'Имя',
 			'lastname' => 'Фамилия',
 			'team_id' => 'Команда',
+			'number' => 'Номер',
 			'alias' => 'Прозвище, погоняло, кликуха',
 			'birthday' => 'День рождения',
 			'image' => 'Фото',

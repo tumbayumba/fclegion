@@ -3,19 +3,17 @@
 /* @var $model Players */
 
 $this->breadcrumbs=array(
-	'Players'=>array('index'),
-	$model->id=>array('view','id'=>$model->id),
-	'Update',
+	'Команды'=>array('teams/admin'),
+	$team->fullname=>array('teams/view','id'=>$team->id),
+	'Игроки'=>array('admin','team_id'=>$team->id),
+	$model->lastname,
 );
 
 $this->menu=array(
-	array('label'=>'List Players', 'url'=>array('index')),
-	array('label'=>'Create Players', 'url'=>array('create')),
-	array('label'=>'View Players', 'url'=>array('view', 'id'=>$model->id)),
-	array('label'=>'Manage Players', 'url'=>array('admin')),
+	array('label'=>'Игроки', 'url'=>array('admin','team_id'=>$team->id)),
 );
 ?>
 
-<h1>Update Players <?php echo $model->id; ?></h1>
+<h1><?php echo $model->lastname; ?></h1>
 
-<?php $this->renderPartial('_form', array('model'=>$model)); ?>
+<?php $this->renderPartial('_form', array('model'=>$model,'team'=>$team)); ?>

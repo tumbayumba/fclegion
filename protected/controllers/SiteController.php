@@ -91,8 +91,10 @@ class SiteController extends Controller
 		{
 			$model->attributes=$_POST['LoginForm'];
 			// validate user input and redirect to the previous page if valid
-			if($model->validate() && $model->login())
+			//if($model->validate() && $users->login($model->username,$model->password))
+			if($model->validate() && $model->login($model->username,$model->password))
 				$this->redirect(Yii::app()->user->returnUrl);
+				//$this->redirect(array('index'));
 		}
 		// display the login form
 		$this->render('login',array('model'=>$model));
@@ -105,5 +107,25 @@ class SiteController extends Controller
 	{
 		Yii::app()->user->logout();
 		$this->redirect(Yii::app()->homeUrl);
+	}
+	
+	public function actionRegister(){
+		$model = new Users;
+		
+		if(isset($_POST['Users']))
+		{
+			$model->attributes=$_POST['Users'];
+			$model->password = md5($model->password);
+			$model->password2 = md5($model->password2);
+			if($model->save())
+				$this->redirect(array('regok','id'=>$model->id));
+		}
+		$this->render('register',array('model'=>$model));
+	}
+	
+	public function actionRegok($id){
+		$model = Users::model()->findByPk($id);
+		
+		$this->render('regok',array('model'=>$model));
 	}
 }

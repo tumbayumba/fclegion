@@ -6,6 +6,21 @@ return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'My Console Application',
 
+	'modules'=>array(
+		/*'user'=>array(
+		  'hash' => 'md5',
+		  'sendActivationMail' => true,
+		  'loginNotActiv' => false,
+		  'activeAfterRegister' => false,
+		  'autoLogin' => true,
+		  'registrationUrl' => array('/user/registration'),
+		  'recoveryUrl' => array('/user/recovery'),
+		  'loginUrl' => array('/user/login'),
+		  'returnUrl' => array('/user/profile'),
+		  'returnLogoutUrl' => array('/user/login'),
+		),*/
+	  ),
+
 	// preloading 'log' component
 	'preload'=>array('log'),
 

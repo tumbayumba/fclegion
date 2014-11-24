@@ -6,7 +6,7 @@
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
 return array(
-	'theme'=>'classic',
+	//'theme'=>'mattskitchen',
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'FC Legion',
 	'sourceLanguage'=>'en',
@@ -19,11 +19,24 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
-		//'application.extansions.ckeditor.*',
+		//'application.modules.user.models.*',
+		//'application.modules.user.components.*',
 	),
 
 	'modules'=>array(
 		'admin',
+		/*'user'=>array(
+		  'hash' => 'md5',
+		  'sendActivationMail' => true,
+		  'loginNotActiv' => false,
+		  'activeAfterRegister' => false,
+		  'autoLogin' => true,
+		  'registrationUrl' => array('/user/registration'),
+		  'recoveryUrl' => array('/user/recovery'),
+		  'loginUrl' => array('/user/login'),
+		  'returnUrl' => array('/user/profile'),
+		  'returnLogoutUrl' => array('/user/login'),
+		),*/
 		// uncomment the following to enable the Gii tool
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
@@ -36,6 +49,10 @@ return array(
 
 	// application components
 	'components'=>array(
+		/*'user'=>array(
+		  // enable cookie-based authentication
+		  'class' => 'WebUser',
+		),*/
 		'user'=>array(
 			// enable cookie-based authentication
 			'allowAutoLogin'=>true,

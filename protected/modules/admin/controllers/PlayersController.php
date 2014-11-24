@@ -63,8 +63,13 @@ class PlayersController extends Controller
 		if(isset($_POST['Players']))
 		{
 			$model->attributes=$_POST['Players'];
-			if($model->save())
+			$model->image=CUploadedFile::getInstance($model,'image');
+			$model->team_id = $team_id;
+			if($model->save()){
+				if($model->image!='' && $model->image!=null)
+					$model->image->saveAs('images/players/'.$model->image);
 				$this->redirect(array('admin','team_id'=>$team_id));
+			}
 		}
 
 		$this->render('create',array(
@@ -81,19 +86,27 @@ class PlayersController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
+		$team = Teams::model()->findByPk($model->team_id);
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Players']))
 		{
+			$old_model = Players::model()->findByPk($id);
 			$model->attributes=$_POST['Players'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id));
+			if(CUploadedFile::getInstance($model,'image')!='' && CUploadedFile::getInstance($model,'image')!=null){
+				$model->image=CUploadedFile::getInstance($model,'image');
+			}else{$model->image = $old_model->image;}
+			if($model->save()){
+				if(CUploadedFile::getInstance($model,'image')!='' && CUploadedFile::getInstance($model,'image')!=null)
+					$model->image->saveAs('images/players/'.$model->image);
+				$this->redirect(array('admin','team_id'=>$model->team_id));
+			}
 		}
 
 		$this->render('update',array(
 			'model'=>$model,
+			'team'=>$team,
 		));
 	}
 

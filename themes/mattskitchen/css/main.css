@@ -3,7 +3,8 @@
  */
 html
 {
-  background: #0d0d0d url(../img/bg-img2.jpg) no-repeat;
+  /*background: #0d0d0d url(../img/bg-img2.jpg) no-repeat;*/
+  background: #0d0d0d url(../img/bg-img3.jpg) no-repeat fixed;
 }
 
 body
