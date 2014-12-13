@@ -1,7 +1,9 @@
 <?php
 /* @var $this SiteController */
 
-$this->pageTitle=Yii::app()->name;
+$this->pageTitle='ФК Легион';
+Yii::app()->clientScript->registerMetaTag('ФК Легион', 'description');
+Yii::app()->clientScript->registerMetaTag('легион, легионеры', 'keywords');
 ?>
 <!-- BEGIN SLIDER -->
     <div class="page-slider margin-bottom-40">
@@ -21,14 +23,14 @@ $this->pageTitle=Yii::app()->name;
                 data-easing="easeOutExpo">
                 Вступай в ряды <br><span class="slide_title_white_bold">ЛЕГИОНА</span>
               </div>
-              <div class="caption lft slide_subtitle_white slide_item_left"
+              <!--<div class="caption lft slide_subtitle_white slide_item_left"
                 data-x="87"
                 data-y="245"
                 data-speed="400"
                 data-start="2000"
                 data-easing="easeOutExpo">
                 Мы из людей делаем богов
-              </div>
+              </div>-->
               <!--<a class="caption lft btn dark slide_btn slide_item_left" href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes"
                 data-x="187"
                 data-y="315"
@@ -66,7 +68,7 @@ $this->pageTitle=Yii::app()->name;
                 data-speed="400"
                 data-start="2000"
                 data-easing="easeOutExpo">
-                «Вени, види, виси»
+                «Вени, види, вичи»
               </div>
               <div class="caption lft slide_desc slide_item_left"
                 data-x="30"
@@ -276,4 +278,116 @@ $this->pageTitle=Yii::app()->name;
         </div>
     </div>
     <!-- END SLIDER -->
-<h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
+    <div class="container">
+		<!-- BEGIN BLOCKQUOTE BLOCK -->   
+		<div class="row quote-v1 margin-bottom-30">
+			<div class="col-md-9">
+				<span >Последний результат: </span>
+			</div>
+			<div class="text-right">
+				<span><b>Легион 6:3 Генератор</b></span>
+				<!--<a class="btn-transparent" href="http://www.keenthemes.com/preview/index.php?theme=metronic_admin" target="_blank"><i class="fa fa-rocket margin-right-10"></i>Preview Admin</a>-->
+			</div>
+		</div>
+		<!-- END BLOCKQUOTE BLOCK -->
+		<div class="content-page">
+          
+          <div class="row">
+			<div class="col-md-9 col-sm-9 blog-posts">
+				<div class="row">
+					
+					<div class="col-md-4 col-sm-4">
+                      <!-- BEGIN CAROUSEL -->            
+                      <div class="front-carousel">
+                        <?php echo '<div class="carousel slide" id="myCarousel'.$blog->id.'">';?>
+                          <!-- Carousel items -->
+                          <div class="carousel-inner">
+                            <?php
+								$content = $blog->content;
+								$content = substr($content,0,200).'...';
+								$cnt = 0;
+								foreach($images as $image){
+									($cnt==0)? $active='active' : $active='' ;
+									echo '<div class="item '.$active.'">
+											'.CHtml::image(Yii::app()->request->baseUrl.'/images/blogs/'.$blog->id.'/'.$image->image,'',array('style'=>'height:100%; width:100%;')).'
+									  
+									</div>';
+									$cnt++;
+								}	
+								?>
+                          </div>
+                          <!-- Carousel nav -->
+                          <?php if(count($images)>1){?>
+							  <?php echo '<a data-slide="prev" href="#myCarousel'.$blog->id.'" class="carousel-control left">';?>
+								<i class="fa fa-angle-left"></i>
+							  </a>
+							  <?php echo '<a data-slide="next" href="#myCarousel'.$blog->id.'" class="carousel-control right">';?>
+								<i class="fa fa-angle-right"></i>
+							  </a>
+						  <?php } ?>
+                        </div>                
+                      </div>
+                      <!-- END CAROUSEL -->             
+                    </div>
+					<div class="col-md-8 col-sm-8">
+                      <h2><?php echo CHtml::link($blog->header,array('/blogs/view','id'=>$blog->id));?></a></h2>
+                      <ul class="blog-info">
+                        <li><i class="fa fa-calendar"></i> <?php echo $blog->create_date;?></li>
+                        <li><i class="fa fa-user"></i> <?php echo $author->login;?></li>
+                        <!--<li><i class="fa fa-comments"></i> 17</li>
+                        <li><i class="fa fa-tags"></i> Metronic, Keenthemes, UI Design</li>-->
+                      </ul>
+                      <p><?php echo $content;?></p>
+                      <?php echo CHtml::link('Читать <i class="icon-angle-right"></i>',array('/blogs/view','id'=>$blog->id),array('class'=>'more'));?>
+                    </div>
+                    
+                </div>
+			</div>
+			<!-- BEGIN RIGHT SIDEBAR -->            
+			<div class="col-md-3 col-sm-3 blog-sidebar">
+				  <!-- BEGIN RECENT NEWS -->                            
+                  <h2>Последние новости</h2>
+                  <div class="recent-news margin-bottom-10">
+                    
+                    <div class="row margin-bottom-10">
+					  <?php
+					  foreach($news as $n){
+						  $author = Users::model()->findByPk($n->author_id);
+						  echo '<div class="col-md-3">'
+							.CHtml::image(Yii::app()->request->baseUrl.'/images/avatars/'.$author->avatar,'',array('class'=>'img-responsive')).                        
+						  '</div>
+						  <div class="col-md-9 recent-news-inner">
+							<h3>'.CHtml::link($n->header,array('news/view','id'=>$n->id),array()).'</h3>
+							<p><i class="fa fa-calendar"></i> '.$n->create_date.' <i class="fa fa-user"></i> '.$author->login.'</p>
+						  </div>';
+					  }
+					  ?>
+                    </div>
+                    
+                  </div>
+                  <h2>Статьи</h2>
+                  <div class="recent-news margin-bottom-10">
+                    
+                    <?php
+                    foreach($blogs as $b){
+						$a = Users::model()->findByPk($b->author_id);
+						echo '<div class="row margin-bottom-10">
+						  <div class="col-md-3">
+							'.CHtml::image(Yii::app()->request->baseUrl.'/images/avatars/'.$a->avatar,'',array('class'=>'img-responsive')).'                        
+						  </div>
+						  <div class="col-md-9 recent-news-inner">
+							<h3>'.CHtml::link($b->header,array('blogs/view','id'=>$b->id)).'</h3>
+							<p><i class="fa fa-calendar"></i> '.$b->create_date.' <i class="fa fa-user"></i> '.$a->login.'</p>
+						  </div>                        
+						</div>';
+					}
+                    ?>
+                    
+                  </div>
+                  <!-- END RECENT NEWS --> 		
+			</div>
+		  </div>
+		  
+		</div>
+			
+	</div>

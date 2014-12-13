@@ -122,8 +122,8 @@ class PlayersController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Players');
-		$players = Players::model()->findAll(array('condition'=>'team_id=1'));
+		$dataProvider = new CActiveDataProvider('Players');
+		$players = Players::model()->findAll(array('condition'=>'team_id=1','order'=>'lastname'));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 			'players'=>$players,

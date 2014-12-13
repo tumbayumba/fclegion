@@ -65,14 +65,21 @@ class UsersController extends Controller
 		$model=new Users;
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Users']))
 		{
 			$model->attributes=$_POST['Users'];
 			$model->password = md5($model->password);
-			if($model->save())
+			$model->avatar=CUploadedFile::getInstance($model,'avatar');
+			if($model->avatar=='' || $model->avatar==null){
+				$model->avatar = 'default_ava.jpg';
+			}
+			if($model->save()){
+				if($model->avatar!='default_ava.jpg')
+					$model->avatar->saveAs('images/avatars/'.$model->avatar);
 				$this->redirect(array('view','id'=>$model->id));
+			}
 		}
 
 		$this->render('create',array(
@@ -90,13 +97,21 @@ class UsersController extends Controller
 		$model=$this->loadModel($id);
 
 		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Users']))
 		{
+			$old_model = Users::model()->findByPk($id);
 			$model->attributes=$_POST['Users'];
-			if($model->save())
+			$model->avatar=CUploadedFile::getInstance($model,'avatar');
+			if($model->avatar=='' || $model->avatar==null){
+				$model->avatar = 'default_ava.jpg';
+			}
+			if($model->save()){
+				if($model->avatar!='default_ava.jpg')
+					$model->avatar->saveAs('images/avatars/'.$model->avatar);
 				$this->redirect(array('view','id'=>$model->id));
+			}
 		}
 
 		$this->render('update',array(

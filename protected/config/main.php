@@ -8,7 +8,7 @@
 return array(
 	//'theme'=>'mattskitchen',
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'FC Legion',
+	'name'=>'ФК Легион',
 	'sourceLanguage'=>'en',
 	'language'=>'ru',
 

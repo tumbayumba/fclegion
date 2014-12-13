@@ -12,7 +12,8 @@
 	// controller action is handling ajax validation correctly.
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
+	'enableAjaxValidation'=>true,
+	'htmlOptions'=>array('enctype'=>'multipart/form-data'),
 )); ?>
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
@@ -26,9 +27,13 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'password'); ?>
-		<?php echo $form->passwordField($model,'password',array('size'=>60,'maxlength'=>128)); ?>
-		<?php echo $form->error($model,'password'); ?>
+		<?php 
+		if($model->isNewRecord){
+			echo $form->labelEx($model,'password');
+			echo $form->passwordField($model,'password',array('size'=>60,'maxlength'=>128));
+			echo $form->error($model,'password');
+		} 
+		?>
 	</div>
 
 	<div class="row">
@@ -87,7 +92,9 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'avatar'); ?>
-		<?php echo $form->textField($model,'avatar',array('size'=>60,'maxlength'=>128)); ?>
+		<?php (isset($model->avatar))? $avatar = $model->avatar : $avatar = null; ?>
+		<?php echo CHtml::image(Yii::app()->request->baseUrl.'/images/avatars/'.$avatar,'',array('height'=>150,'width'=>'100')); ?>
+		<?php echo $form->fileField($model,'avatar'); ?>
 		<?php echo $form->error($model,'avatar'); ?>
 	</div>
 

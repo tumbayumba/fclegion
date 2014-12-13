@@ -18,11 +18,13 @@
                     'encodeLabel'=>false,
                     'items'=>array(
 						array('label'=>'Команды', 'url'=>array('/admin/teams')),
-						/*array('label'=>Yii::t('user','Users').' <span class="caret"></span>', 'url'=>array('/admin/users'),'itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
+						array('label'=>'Новости', 'url'=>array('/admin/news')),
+						array('label'=>'Статьи', 'url'=>array('/admin/blogs')),
+						array('label'=>Yii::t('user','Users').' <span class="caret"></span>', 'url'=>array('/admin/users'),'itemOptions'=>array('class'=>'dropdown','tabindex'=>"-1"),'linkOptions'=>array('class'=>'dropdown-toggle','data-toggle'=>"dropdown"),
 						'items'=>array(
                             array('label'=>'Все пользователи', 'url'=>array('/admin/users')),
 							array('label'=>'Группы', 'url'=>'#'),
-                        )),*/
+                        )),
                         //array('label'=>'Dashboard', 'url'=>array('/site/index')),
                         //array('label'=>'Graphs & Charts', 'url'=>array('/site/page', 'view'=>'graphs')),
                         //array('label'=>'Forms', 'url'=>array('/site/page', 'view'=>'forms')),

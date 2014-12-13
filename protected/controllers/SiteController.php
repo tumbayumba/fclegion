@@ -29,7 +29,18 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+		$news = News::model()->findAll(array('order'=>'create_date DESC','limit'=>5));
+		$blogs = Blogs::model()->findAll(array('order'=>'create_date DESC','limit'=>3));
+		$blog = Blogs::model()->find(array('order'=>'create_date DESC','limit'=>1));
+		$images = SiteController::getImages($blog->id);
+		$author = Users::model()->findByPk($blog->author_id);
+		$this->render('index',array(
+			'news'=>$news,
+			'blog'=>$blog,
+			'blogs'=>$blogs,
+			'author'=>$author,
+			'images'=>$images,
+		));
 	}
 
 	/**
@@ -128,4 +139,16 @@ class SiteController extends Controller
 		
 		$this->render('regok',array('model'=>$model));
 	}
+	
+	public static function getImages($blog_id){
+		$images = BlogImages::model()->findAll('blog_id=:bid',array(':bid'=>$blog_id));
+		if(empty($images)){
+			return false;
+		}
+		else{
+			return $images;
+		}
+		
+	}
+	
 }

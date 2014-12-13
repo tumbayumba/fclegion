@@ -40,6 +40,7 @@ class Users extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('login, password', 'required'),
+			array('login','unique'),
 			array('gender, fav_club_id, fav_player_id, usergroup_id, is_active', 'numerical', 'integerOnly'=>true),
 			array('login, password, email, firstname, lastname, avatar', 'length', 'max'=>128),
 			array('born_date, last_visit, description', 'safe'),

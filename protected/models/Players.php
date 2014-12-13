@@ -138,4 +138,9 @@ class Players extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+	
+	
+	public static function legioneers(){
+		return Players::model()->findAll(array('condition'=>'team_id=1'));
+	}
 }

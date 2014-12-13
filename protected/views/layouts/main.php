@@ -25,16 +25,10 @@ License: You must have a valid license purchased only from themeforest (the abov
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <meta content="Metronic Shop UI description" name="description">
-  <meta content="Metronic Shop UI keywords" name="keywords">
-  <meta content="keenthemes" name="author">
-
-  <meta property="og:site_name" content="-CUSTOMER VALUE-">
-  <meta property="og:title" content="-CUSTOMER VALUE-">
-  <meta property="og:description" content="-CUSTOMER VALUE-">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="-CUSTOMER VALUE-"><!-- link to image for socio -->
-  <meta property="og:url" content="-CUSTOMER VALUE-">
+  <!--<meta content="FC Legion" name="description">
+  <meta content="ФК Легион, Гребенка, Гребінка, fclegion" name="keywords">
+  <meta content="ALL" name="Robots">
+  <meta content="tumbayumba" name="author">-->
 
   <link rel="shortcut icon" href="favicon.ico">
 
@@ -71,7 +65,7 @@ License: You must have a valid license purchased only from themeforest (the abov
       <div class="color-mode-icons icon-color"></div>
       <div class="color-mode-icons icon-color-close"></div>
       <div class="color-mode">
-        <p>THEME COLOR</p>
+        <!--<p>Цвет темы</p>-->
         <ul class="inline">
           <li class="color-red current color-default" data-style="red"></li>
           <li class="color-blue" data-style="blue"></li>
@@ -90,8 +84,8 @@ License: You must have a valid license purchased only from themeforest (the abov
                 <!-- BEGIN TOP BAR LEFT PART -->
                 <div class="col-md-6 col-sm-6 additional-shop-info">
                     <ul class="list-unstyled list-inline">
-                        <li><i class="fa fa-phone"></i><span>+1 456 6717</span></li>
-                        <li><i class="fa fa-envelope-o"></i><span>info@keenthemes.com</span></li>
+                        <li><i class="fa fa-phone"></i><span>+380 666 88 69</span></li>
+                        <li><i class="fa fa-envelope-o"></i><span>fclegion-grebinka@ukr.net</span></li>
                     </ul>
                 </div>
                 <!-- END TOP BAR LEFT PART -->
@@ -115,8 +109,9 @@ License: You must have a valid license purchased only from themeforest (the abov
     <!-- BEGIN HEADER -->
     <div class="header">
       <div class="container">
-        <a class="site-logo" href="index.html"><img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/frontend/layout/img/logos/logo-corp-red.png" alt="Metronic FrontEnd"></a>
-
+		  <?php echo CHtml::link('ФК ЛЕГИОН',array('/site/index'),array('class'=>'site-logo','style'=>'text-decoration:none;'))?>
+		<?php //echo CHtml::link(CHtml::image(Yii::app()->request->baseUrl.'/images/gerb_icon.jpg','ФК Легион',array('style'=>'height: 50px;')),array(Yii::app()->request->baseUrl),array('class'=>'site-logo'));?>
+		
         <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
 
         <!-- BEGIN NAVIGATION -->
@@ -125,9 +120,13 @@ License: You must have a valid license purchased only from themeforest (the abov
 			<li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">Легион</a>
               <ul class="dropdown-menu">
-                <li><?php echo CHtml::link('Состав',array('/players/index'),array())?></li>
+                <li><?php echo CHtml::link('Легионеры',array('/players/index'),array())?></li>
               </ul>
             </li>
+            <?php (Yii::app()->user->isGuest)? $display = 'display:none;' : $display = '' ;?>
+            <li><?php echo CHtml::link('Статьи',array('/blogs'),array())?></li>
+            <li><?php echo CHtml::link('Новости',array('/news'),array())?></li>
+            <li><?php echo CHtml::link('Админка',array('/admin'),array('style'=>$display))?></li>
             <!--<li class="dropdown">
               <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
                 Features
@@ -220,7 +219,7 @@ License: You must have a valid license purchased only from themeforest (the abov
       </div>
     </div>
     <!-- Header END -->
-
+    
 <?php echo $content; ?>
 
 	<!-- BEGIN PRE-FOOTER -->
@@ -229,27 +228,19 @@ License: You must have a valid license purchased only from themeforest (the abov
         <div class="row">
           <!-- BEGIN BOTTOM ABOUT BLOCK -->
           <div class="col-md-4 col-sm-6 pre-footer-col">
-            <h2>About us</h2>
-            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam sit nonummy nibh euismod tincidunt ut laoreet dolore magna aliquarm erat sit volutpat.</p>
+            <h2>О нас</h2>
+            <p>Минифутбольная команда ФК Легион (Гребёнка).</p>
 
             <div class="photo-stream">
-              <h2>Photos Stream</h2>
+              <h2>Легионеры</h2>
               <ul class="list-unstyled">
-                <li><a href="#"><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/frontend/pages/img/people/img5-small.jpg"></a></li>
-                <li><a href="#"><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/frontend/pages/img/works/img1.jpg"></a></li>
-                <li><a href="#"><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/frontend/pages/img/people/img4-large.jpg"></a></li>
-                <li><a href="#"><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/frontend/pages/img/works/img6.jpg"></a></li>
-                <li><a href="#"><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/frontend/pages/img/works/img3.jpg"></a></li>
-                <li><a href="#"><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/frontend/pages/img/people/img2-large.jpg"></a></li>
-                <li><a href="#"><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/frontend/pages/img/works/img2.jpg"></a></li>
-                <li><a href="#"><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/frontend/pages/img/works/img5.jpg"></a></li>
-                <li><a href="#"><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/frontend/pages/img/people/img5-small.jpg"></a></li>
-                <li><a href="#"><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/frontend/pages/img/works/img1.jpg"></a></li>
-                <li><a href="#"><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/frontend/pages/img/people/img4-large.jpg"></a></li>
-                <li><a href="#"><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/frontend/pages/img/works/img6.jpg"></a></li>
-                <li><a href="#"><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/frontend/pages/img/works/img3.jpg"></a></li>
-                <li><a href="#"><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/frontend/pages/img/people/img2-large.jpg"></a></li>
-                <li><a href="#"><img alt="" src="<?php echo Yii::app()->request->baseUrl; ?>/assets/frontend/pages/img/works/img2.jpg"></a></li>
+				  <?php
+				  $players = Players::legioneers();
+				  shuffle($players);
+				  foreach($players as $player){
+					  echo '<li>'.CHtml::link('<img src="'.Yii::app()->request->baseUrl.'/images/players/'.$player->image.'">',array()).'</li>';
+				  }
+				  ?>
               </ul>                    
             </div>
           </div>
@@ -257,17 +248,16 @@ License: You must have a valid license purchased only from themeforest (the abov
 
           <!-- BEGIN BOTTOM CONTACTS -->
           <div class="col-md-4 col-sm-6 pre-footer-col">
-            <h2>Our Contacts</h2>
+            <h2>Контакты</h2>
             <address class="margin-bottom-40">
-              35, Lorem Lis Street, Park Ave<br>
-              California, US<br>
-              Phone: 300 323 3456<br>
-              Fax: 300 323 1456<br>
-              Email: <a href="mailto:info@metronic.com">info@metronic.com</a><br>
-              Skype: <a href="skype:metronic">metronic</a>
+              ул.Римская, 88<br>
+              г.Гребёнка, Украина<br>
+              Тел: 69 88 69<br>
+              Email: <a href="mailto:fclegion-grebinka@ukr.net">fclegion-grebinka@ukr.net</a><br>
+              Skype: <a href="skype:s.rospopov">s.rospopov</a>
             </address>
 
-            <div class="pre-footer-subscribe-box pre-footer-subscribe-box-vertical">
+            <!--<div class="pre-footer-subscribe-box pre-footer-subscribe-box-vertical">
               <h2>Newsletter</h2>
               <p>Subscribe to our newsletter and stay up to date with the latest news and deals!</p>
               <form action="#">
@@ -278,14 +268,14 @@ License: You must have a valid license purchased only from themeforest (the abov
                   </span>
                 </div>
               </form>
-            </div>
+            </div>-->
           </div>
           <!-- END BOTTOM CONTACTS -->
 
           <!-- BEGIN TWITTER BLOCK --> 
           <div class="col-md-4 col-sm-6 pre-footer-col">
-            <h2 class="margin-bottom-0">Latest Tweets</h2>
-            <a class="twitter-timeline" href="https://twitter.com/twitterapi" data-tweet-limit="2" data-theme="dark" data-link-color="#57C8EB" data-widget-id="455411516829736961" data-chrome="noheader nofooter noscrollbar noborders transparent">Loading tweets by @keenthemes...</a>
+            <h2 class="margin-bottom-0">Последние новости</h2>
+            <!--<a class="twitter-timeline" href="https://twitter.com/twitterapi" data-tweet-limit="2" data-theme="dark" data-link-color="#57C8EB" data-widget-id="455411516829736961" data-chrome="noheader nofooter noscrollbar noborders transparent">Loading tweets by @keenthemes...</a>-->
           </div>
           <!-- END TWITTER BLOCK -->
         </div>
@@ -299,13 +289,13 @@ License: You must have a valid license purchased only from themeforest (the abov
         <div class="row">
           <!-- BEGIN COPYRIGHT -->
           <div class="col-md-6 col-sm-6 padding-top-10">
-            2014 © Metronic Shop UI. ALL Rights Reserved. <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+            Copyright &copy; <?php echo date('Y'); ?> by @tumbayumba. All rights reserved.<br/>
           </div>
           <!-- END COPYRIGHT -->
           <!-- BEGIN PAYMENTS -->
           <div class="col-md-6 col-sm-6">
             <ul class="social-footer list-unstyled list-inline pull-right">
-              <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+              <!--<li><a href="#"><i class="fa fa-facebook"></i></a></li>
               <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
               <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
               <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
@@ -313,8 +303,8 @@ License: You must have a valid license purchased only from themeforest (the abov
               <li><a href="#"><i class="fa fa-skype"></i></a></li>
               <li><a href="#"><i class="fa fa-github"></i></a></li>
               <li><a href="#"><i class="fa fa-youtube"></i></a></li>
-              <li><a href="#"><i class="fa fa-dropbox"></i></a></li>
-              <li><a href="#"><i class="fa fa-vk"></i></a></li>
+              <li><a href="#"><i class="fa fa-dropbox"></i></a></li>-->
+              <li><a href="https://vk.com/clubfclegion" target="_blank"><i class="fa fa-vk"></i></a></li>
             </ul>  
           </div>
           <!-- END PAYMENTS -->
